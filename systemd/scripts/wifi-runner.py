@@ -1,7 +1,7 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 def ParseConfig(config_name):
-    import ConfigParser
-    cf = ConfigParser.ConfigParser()
+    import configparser
+    cf = configparser.ConfigParser()
     cf.read(config_name)
     result_dict = {}
     for sec in cf.sections():
@@ -18,7 +18,7 @@ def GetServiceName():
     # we are looking only for wifi connections
     online_service = filter(lambda x: x[1]["Type"]==dbus.String(u"wifi"), services)
     # State is 'ready' means that ip was set.
-    online_service = filter(lambda x: x[1]["State"]in (dbus.String(u"online"),dbus.String(u'ready')),online_service)
+    online_service = list(filter(lambda x: x[1]["State"]in (dbus.String(u"online"),dbus.String(u'ready')),online_service))
     if online_service:
         if "Name" in online_service[0][1]:		
             return online_service[0][1]["Name"]
@@ -34,7 +34,7 @@ def script_run(name,action):
             try:
                 subprocess.Popen(script.split(),stdout=sys.stdout,stderr=sys.stderr)
             except OSError:
-                print "Something went wrong with script", script
+                print("Something went wrong with script", script)
 
 def hand_func(pname, value):
     global name, default
