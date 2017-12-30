@@ -17,9 +17,11 @@ Log in on the phone with ssh and become root by typing "devel-su".
 Then install the required python modules:
 
 ``$ pkcon install dbus-python3``
+
 ``$ pkcon install python3-gobject``
 
-MechanicalSoup is a handy module that makes scripting websites very easy. It is only required for the included WIFIonICE autologon script:
+MechanicalSoup is a handy python module that makes scripting websites very easy. It is only required for the included WIFIonICE autologon script:
+
 ``$ pip3 install -Iv https://github.com/MechanicalSoup/MechanicalSoup/archive/v0.7.0.zip``
 
 
