@@ -1,9 +1,10 @@
 [Unit]
 Description=Run scripts when wifi starts
-Requires=lipstick.service
-After=lipstick.service
+Requires=dbus.socket
+After=post-user-session.target lipstick.service dbus.socket
 
 [Service]
+Type=simple
 ExecStart=/home/nemo/.config/systemd/scripts/wifi-runner.py
 
 [Install]
